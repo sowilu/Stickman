@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Networking.Transport;
 
-public class Guns : NetworkBehaviour
+public class Gun : NetworkBehaviour
 {
     public NetworkVariable<int> ammo = new();
     public int maxAmmo = 15;
-    public NetworkBehaviour bulletPrefab;
+    public NetworkObject bulletPrefab;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public Transform target;

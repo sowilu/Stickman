@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
+  - Gun
   layers:
   - Default
   - TransparentFX

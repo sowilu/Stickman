@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3044300385895146558}
   m_Layer: 0
   m_Name: gun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3343189251370155659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 37d3b01e43bdf634280358698d44f6de, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   ammo:
     m_InternalValue: 0
   maxAmmo: 15
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5005159706848075611, guid: 45abc61065982de428cdc72bdaefbafc, type: 3}
   rb: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &4868182674855775718
