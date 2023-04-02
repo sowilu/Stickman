@@ -16,6 +16,9 @@ public class Player : NetworkBehaviour
     public NetworkVariable<Color> color = new(readPerm:NetworkVariableReadPermission.Everyone, writePerm:NetworkVariableWritePermission.Server);
     public NetworkVariable<bool> roundWinner = new();
 
+
+    public NetworkVariable<bool> isVisible = new();
+
     public override void OnNetworkSpawn()
     {
         if (IsLocalPlayer)
@@ -32,6 +35,12 @@ public class Player : NetworkBehaviour
         roundWinner.OnValueChanged += (old, current) =>
         {
             crown.SetActive(current);
+        };
+        
+        isVisible.OnValueChanged += (old, current) =>
+        {
+            //spriteRenderer.enabled = current;
+            gameObject.SetActive(current);
         };
     }
 

@@ -27,8 +27,9 @@ public class NetworkManagerUI : MonoBehaviour
     public void Join()
     {
         var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-        transport.ConnectionData.Address = ip.text;
-        transport.ConnectionData.Port = ushort.Parse(port.text);
+        /*transport.ConnectionData.Address = ip.text;
+        transport.ConnectionData.Port = ushort.Parse(port.text);*/
+        transport.SetConnectionData(ip.text, ushort.Parse(port.text));
         
         NetworkManager.Singleton.StartClient();
     }
