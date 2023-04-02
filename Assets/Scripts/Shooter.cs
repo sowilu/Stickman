@@ -23,12 +23,33 @@ public class Shooter : NetworkBehaviour
         {
             ShootServerRpc();
         }
+        
+        //if q is pressed - drop gun
+        if (Input.GetKeyDown(KeyCode.Q) && gun != null && IsLocalPlayer)
+        {
+            DropServerRpc();
+        }
 
         if (IsLocalPlayer)
         {
             LookServerRpc(Input.mousePosition);
         }
             
+    }
+
+    [ServerRpc]
+    void DropServerRpc()
+    {
+        if (gun.ammo.Value <= 0)
+        {
+            gun.GetComponent<NetworkObject>().Despawn(true);
+            return;
+        }
+            
+        gun.name = "Gun:";
+        gun.rb.simulated = true;
+        gun.target = null;
+        gun = null;
     }
 
     [ServerRpc]
@@ -57,6 +78,8 @@ public class Shooter : NetworkBehaviour
     [ServerRpc]
     void PickUpServerRpc()
     {
+        if(gunsAround.Count == 0) return;
+        
         var minDistance = float.MaxValue;
         foreach (var gunTransform in gunsAround)
         {

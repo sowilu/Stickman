@@ -5,7 +5,9 @@ using Unity.Netcode;
 
 public class Bullet : NetworkBehaviour
 {
-    //TODO: damage
+    private bool destructOnInpact = true;
+
+    public int damage = 5;
     public float lifeTime = 15;
     public float speed = 10;
     
@@ -14,6 +16,20 @@ public class Bullet : NetworkBehaviour
         GetComponent<Rigidbody2D>().velocity = transform.right * speed;
         
         Invoke(nameof(SelfDestruct), lifeTime);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("Player") && IsServer)
+        {
+            other.gameObject.GetComponent<Health>().hp.Value -= damage;
+
+            if (destructOnInpact)
+            {
+                SelfDestruct();
+            }
+        }
+            
     }
     
     void SelfDestruct()

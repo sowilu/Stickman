@@ -27,7 +27,9 @@ public class Meteor : NetworkBehaviour
         
         if(explosion != null)
             Instantiate(explosion, transform.position, Quaternion.identity);
-
+        
+        CameraShake.inst.Shake();
+        
         if (IsServer)
         {
             foreach (var particle in explosionParticles)
@@ -38,7 +40,7 @@ public class Meteor : NetworkBehaviour
                 p.Spawn(true);
                 
                 var direction = Random.Range(-1f, 1f) * Vector2.right + Vector2.up;
-                print(direction);
+                //print(direction);
                 p.GetComponent<Rigidbody2D>().AddForce(direction * 10, ForceMode2D.Impulse);
             }
             
